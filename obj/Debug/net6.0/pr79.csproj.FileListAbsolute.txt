@@ -1,0 +1,15 @@
+/Users/dmitryroar/Desktop/cpp/PP/pr79/bin/Debug/net6.0/pr79
+/Users/dmitryroar/Desktop/cpp/PP/pr79/bin/Debug/net6.0/pr79.deps.json
+/Users/dmitryroar/Desktop/cpp/PP/pr79/bin/Debug/net6.0/pr79.runtimeconfig.json
+/Users/dmitryroar/Desktop/cpp/PP/pr79/bin/Debug/net6.0/pr79.dll
+/Users/dmitryroar/Desktop/cpp/PP/pr79/bin/Debug/net6.0/pr79.pdb
+/Users/dmitryroar/Desktop/cpp/PP/pr79/obj/Debug/net6.0/pr79.csproj.AssemblyReference.cache
+/Users/dmitryroar/Desktop/cpp/PP/pr79/obj/Debug/net6.0/pr79.GeneratedMSBuildEditorConfig.editorconfig
+/Users/dmitryroar/Desktop/cpp/PP/pr79/obj/Debug/net6.0/pr79.AssemblyInfoInputs.cache
+/Users/dmitryroar/Desktop/cpp/PP/pr79/obj/Debug/net6.0/pr79.AssemblyInfo.cs
+/Users/dmitryroar/Desktop/cpp/PP/pr79/obj/Debug/net6.0/pr79.csproj.CoreCompileInputs.cache
+/Users/dmitryroar/Desktop/cpp/PP/pr79/obj/Debug/net6.0/pr79.dll
+/Users/dmitryroar/Desktop/cpp/PP/pr79/obj/Debug/net6.0/refint/pr79.dll
+/Users/dmitryroar/Desktop/cpp/PP/pr79/obj/Debug/net6.0/pr79.pdb
+/Users/dmitryroar/Desktop/cpp/PP/pr79/obj/Debug/net6.0/pr79.genruntimeconfig.cache
+/Users/dmitryroar/Desktop/cpp/PP/pr79/obj/Debug/net6.0/ref/pr79.dll
