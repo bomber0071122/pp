@@ -5,230 +5,13 @@ using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using System.Text.RegularExpressions;
+
 
 namespace pr79
 {
   internal class Program
   {
-    static void pr7()
-    {
-      double a, b;
-      Console.ForegroundColor = ConsoleColor.Red;
-      Console.WriteLine("Для нахождения квадртаного корня от суммы двух вещественных чисел, введите, пожалуйста");
-
-      Console.ForegroundColor = ConsoleColor.Cyan;
-      Console.Write("первое значение: ");
-      a = Convert.ToDouble(Console.ReadLine());
-      Console.Write("второе значение: ");
-      b = Convert.ToDouble(Console.ReadLine());
-
-      Console.ForegroundColor = ConsoleColor.Green;
-      Console.WriteLine($"Квадртаный корень от суммы двух вещественных чисел равна {Math.Sqrt(a + b)}");
-      Console.ReadKey();
-    }
-
-    static void pr8()
-    {
-      var culture = (CultureInfo)CultureInfo.CurrentCulture.Clone();
-      culture.NumberFormat.CurrencySymbol = "р. ";
-
-      float x, y;
-      double z, t, g, sum;
-
-      Console.ForegroundColor = ConsoleColor.Red;
-      Console.WriteLine(
-      "\nПрограмма находит значение выражения a=(y-cos(4x))/(2sin(x)^2+ytg^3z), \n" +
-      "выводит текущую время и дату в формате 03/21/22 16-08-2017 Пн \n"
-      );
-
-      Console.ForegroundColor = ConsoleColor.Yellow;
-      Console.Write("Введите число x для нахождения результата выражения a, x = ");
-      x = float.Parse(Console.ReadLine());
-      Console.Write("Введите число y для нахождения результата выражения a, y = ");
-      y = float.Parse(Console.ReadLine());
-      Console.Write("Введите число z для нах ождения результата выражения a, z = ");
-      z = double.Parse(Console.ReadLine());
-      Console.Write("Введите число t для нахождения результата выражения a, t = ");
-      t = double.Parse(Console.ReadLine());
-      Console.Write("Введите число g для нахождения результата выражения a, g = ");
-      g = double.Parse(Console.ReadLine());
-
-      sum = (y - Math.Cos(4 * x)) / (2 * Math.Pow(Math.Sin(x), 2) + (y * t * Math.Pow(g, 3) * z));
-
-      Console.ForegroundColor = ConsoleColor.Green;
-      Console.WriteLine($"Результат выражения в десятичном формате, a = {sum}");
-      Console.WriteLine($"Результат выражения в шестнадцатиричном формате, a = {Convert.ToInt32(sum).ToString("X")}");
-      Console.WriteLine($"Результат выражения в денежном формате, a = {Convert.ToDecimal(sum).ToString("c", culture)}");
-      Console.WriteLine($"Результат выражения a в научном формате a = {sum.ToString("e")}");
-      Console.WriteLine($"{DateTime.Now.ToString("H'/'m'/'s MM-dd-yyyy", CultureInfo.InvariantCulture)}");
-
-    }
-
-    static void pr9()
-    {
-      double a, b, a2, b2, s, s2;
-      Console.ForegroundColor = ConsoleColor.Red;
-      Console.WriteLine("Для нахождения площади заштрихованной фигуры, введите, пожалуйста");
-
-      Console.ForegroundColor = ConsoleColor.Cyan;
-      Console.Write("длину большей фигуры: ");
-      a = Convert.ToDouble(Console.ReadLine());
-      Console.Write("ширину большей фигуры: ");
-      b = Convert.ToDouble(Console.ReadLine());
-      s = a * b;
-
-      Console.ForegroundColor = ConsoleColor.Green;
-      Console.WriteLine($"Площадь первой фигруы равна = {s}");
-
-
-      Console.ForegroundColor = ConsoleColor.DarkYellow;
-      Console.Write("длину меньшей фигуры: ");
-      a2 = Convert.ToDouble(Console.ReadLine());
-      Console.Write("ширину меньшей фигуры: ");
-      b2 = Convert.ToDouble(Console.ReadLine());
-      s2 = a2 * b2;
-      if (a2 > a || b2 > b)
-      {
-        Console.WriteLine("Значение меньшей фигуры не должно быть больше первой");
-        // Environment.Exit(1);
-        Console.ReadKey();
-      }
-
-      Console.ForegroundColor = ConsoleColor.Green;
-      Console.WriteLine($"Площадь второй фигруы равна = {s2}");
-
-      Console.ForegroundColor = ConsoleColor.DarkMagenta;
-      Console.WriteLine($"Площадь заштрихованной фигуры равна = {s - s2}");
-    }
-
-    static void pr789()
-    {
-      Console.Write("Введите, пожалуйста, ваше имя: ");
-      string name = Console.ReadLine();
-      Console.WriteLine($"Добро пожаловать, {name}!");
-
-      pr8();
-
-      Console.ForegroundColor = ConsoleColor.Green;
-      Console.WriteLine($"До свидания, {name}!");
-    }
-
-    static void pr10(bool useTern)
-    {
-      const int size = 4;
-      double[] arr = new double[size];
-      double
-      sum = 0;
-
-      string type = useTern ? "тернарный" : "условный";
-      Console.WriteLine(
-      $"Программа находит сумму положительных вещественных чисел, введеными вами." +
-      $"Используя {type} оператор"
-      );
-
-      for (int i = 0; i < size; i++)
-      {
-        Console.Write($"Введите {i + 1} вещественное число: ");
-        arr[i] = double.Parse(Console.ReadLine());
-      }
-
-      for (int i = 0; i < size; i++)
-      {
-        if (useTern)
-        {
-          sum += arr[i] % 2 == 0 ? arr[i] : 0;
-        }
-        else
-        {
-          if (arr[i] % 2 == 0)
-          {
-            sum += arr[i];
-
-          }
-        }
-      }
-
-      Console.WriteLine($"Сумма четных вещественных чисел, введеными вами: {sum}");
-    }
-
-    static void pr11()
-    {
-      double x;
-      char k;
-    }
-
-    static void pr12()
-    {
-      string password = "password", bodyPassword = "";
-      bool success = false;
-
-      Console.WriteLine(
-        "Программа проверяет пароль пользователя \n" +
-        "и находит ср. знач. чисел, в случае успешного ввода\n"
-      );
-
-      for (int x = 0; x < 3; ++x)
-      {
-        Console.WriteLine("Введите пароль: ");
-        bodyPassword = Console.ReadLine();
-        if (password == bodyPassword)
-        {
-          success = true;
-          break;
-        }
-      }
-
-      if (!success)
-      {
-        Console.WriteLine("Количество попыток истекло");
-        return;
-      }
-
-      Console.WriteLine("Вход разрешен!");
-
-      int n, m = 0;
-      Console.Write("Введите меньшее значение: ");
-      n = int.Parse(Console.ReadLine());
-      Console.Write("Введите большее значение: ");
-      m = int.Parse(Console.ReadLine());
-
-      Console.WriteLine($"Среднее значение чисел {n} и {m} равно = {(m + n) * .5}");
-    }
-
-    static double forPr13(double y, int i)
-    {
-      y = 1 / Math.Pow(4, i) + Math.Pow(5, i + 2);
-      return y;
-    }
-    static void pr13()
-    {
-      Console.WriteLine(
-        "Программа находит бесконечную сумму с заданной точностью Е (Е > 0) выражения " +
-        "1 / 4^i + 5^i+2"
-      );
-
-      int e, idx = 0;
-      double y = 0;
-
-      Console.Write("Введите точность: ");
-      e = int.Parse(Console.ReadLine());
-
-      if (e > 0)
-      {
-        while (Math.Abs(y) < e)
-        {
-          y += forPr13(y, idx);
-          idx++;
-        }
-
-        Console.WriteLine($"Бесконечная сумма с заданной точностью Е - {e}: {y}");
-      }
-      else
-      {
-        Console.WriteLine("Заданая точность должна быть больше 0!");
-      }
-    }
-
     static void pr14()
     {
       const int size = 17,
@@ -259,18 +42,428 @@ namespace pr79
 
     }
 
+    static void pr15()
+    {
+      const int size = 8, minRange = -300, maxRange = 500;
+      var rand = new Random();
+
+      char pick;
+      int[,] arr = new int[size, size];
+
+
+      Console.WriteLine(
+      "Программа выводит пользовательское меню, где можно:\n" +
+      $"\tзаполнить случайным образом целыми числами из диапазона [{minRange}; {maxRange}] двумерный массив, содержащий {size}х{size}\n" +
+      "\tвывести исходный массив на экран\n" +
+      "\tзаменить все элементы на главной диагонале на -1\n" +
+      "\tОтсортировать все четные строки в порядке убывания"
+      );
+
+
+      for (; ; )
+      {
+        do
+        {
+          Console.WriteLine("1: Заполнить массив случайными числами");
+          Console.WriteLine("2: Вывод массива на экран");
+          Console.WriteLine("3: Замена всех элементов на главной диагонале на -1 и вывод полученного результата");
+          Console.WriteLine("4: Отсортировать все четные строки в порядке убывания и вывод полученного результата");
+          Console.WriteLine("5: Выход из программы");
+          Console.WriteLine("Выберите пункт меню");
+          pick = char.Parse(Console.ReadLine());
+        } while (pick > '5');
+
+        switch (pick)
+        {
+          case '1':
+            {
+              for (int i = 0; i < size; i++)
+              {
+                for (int j = 0; j < size; j++)
+                {
+                  arr[i, j] = rand.Next(minRange, maxRange);
+                }
+              }
+            }; break;
+          case '2':
+            {
+              Console.WriteLine("Полученный массив: ");
+              for (int i = 0; i < size; i++)
+              {
+                for (int j = 0; j < size; j++)
+                {
+                  Console.Write($"{arr[i, j]} ");
+                }
+                Console.WriteLine();
+              }
+              Console.WriteLine();
+            }; break; ;
+          case '3':
+            {
+              Console.WriteLine("Полученный массив: ");
+              for (int i = 0; i < size; i++)
+              {
+                arr[i, i] -= 1;
+                for (int j = 0; j < size; j++)
+                {
+                  Console.Write($"{arr[i, j]} ");
+                }
+                Console.WriteLine();
+              }
+            }
+            break;
+          case '4':
+            {
+              for (int i = 0; i < size; i++)
+              {
+                for (int j = 0; j < size; j++)
+                {
+                  for (int k = 0; k < j; k++)
+                  {
+                    if (i % 2 == 0)
+                    {
+                      if (arr[i, k] < arr[i, k + 1])
+                      {
+                        int myTemp = arr[i, k];
+                        arr[i, k] = arr[i, k + 1];
+                        arr[i, k + 1] = myTemp;
+                      }
+                    }
+                  }
+                  Console.Write($"{arr[i, j]} ");
+                }
+                Console.WriteLine();
+              }
+            }; break;
+          case '5': return;
+          default: break;
+        }
+      }
+    }
+
+    static void pr16()
+    {
+      int[][] arr = new int[3][];
+      arr[0] = new int[9];
+      arr[1] = new int[4];
+      arr[2] = new int[4];
+
+      char pick;
+
+      Console.WriteLine(
+      "Программа выводит пользовательское меню, где можно:\n" +
+      $"- заполнить два одномерных массива значениями\n" +
+      "- вывести полученный результат:\n" +
+      "\tсумма положительных элементов первого массива\n" +
+      "\tсумма отрицательных элементов второго массива\n" +
+      "\tколичество четных элементов первого массива\n" +
+      "\tколичество нечетных элементов второго массива"
+      );
+
+      for (; ; )
+      {
+        do
+        {
+          Console.WriteLine("1: Заполнить два одномерных массива");
+          Console.WriteLine("2: Вывести полученный результат");
+          Console.WriteLine("3: Выход из программы");
+          Console.WriteLine("Выберите пункт меню");
+          pick = char.Parse(Console.ReadLine());
+        } while (pick > '3');
+
+        switch (pick)
+        {
+          case '1':
+            {
+              for (int i = 0; i < arr.Length; i++)
+              {
+                if (i == 2) break;
+                for (int j = 0; j < arr[i].Length; j++)
+                {
+                  Console.WriteLine($"Введите {arr[i].Length} целых чисел");
+                  Console.Write($"{j + 1}): ");
+
+                  arr[i][j] = int.Parse(Console.ReadLine());
+
+                  switch (i)
+                  {
+                    case 0:
+                      {
+                        Console.WriteLine("!1: ");
+                        if (arr[i][j] > 0) arr[2][0] += arr[i][j];
+                        if (arr[i][j] % 2 == 0) arr[2][2] += 1;
+                        continue;
+                      }
+                    case 1:
+                      {
+                        if (arr[i][j] < 0) arr[2][1] += arr[i][j];
+                        if (arr[i][j] % 2 != 0) arr[2][3] += 1;
+                        continue;
+                      }
+                  }
+                }
+              }
+            }; break;
+          case '2':
+            {
+              Console.WriteLine(
+                $"сумма положительных элементов первого массива - {arr[2][0]}\n" +
+                $"сумма отрицательных элементов второго массива - {arr[2][1]}\n" +
+                $"количество четных элементов первого массива - {arr[2][2]}\n" +
+                $"количество нечетных элементов второго массива - {arr[2][3]}"
+              );
+            }; break;
+          case '3': return;
+          default: break;
+        }
+      }
+    }
+
+    static void pr17()
+    {
+      const int size = 9;
+
+      char pick;
+      int[] iArray = new int[size];
+
+      Console.WriteLine(
+        "Программа выводит пользовательское меню, где можно:\n" +
+        $"- заполнить массив длинной {size} целочисленными элементами\n" +
+        "- вывести на экран адрес каждого четного элемента\n" +
+        "- вывести на экран значение элемента, индекс которого меньше индекса, введенного вами, на 1\n" +
+        "- определяет время работы пользователя с программой при выборе каждого пункта меню"
+      );
+
+      for (; ; )
+      {
+        do
+        {
+          Console.WriteLine("1: Заполнить массив");
+          Console.WriteLine("2: Вывести на экран адрес каждого четного элемента");
+          Console.WriteLine("3: Вывести на экран значение элемента, индекс которого меньше индекса, введенного вами, на 1");
+          Console.WriteLine("4: Выход из программы");
+          Console.WriteLine("Выберите пункт меню");
+          pick = char.Parse(Console.ReadLine());
+        } while (pick > '4');
+
+        System.Diagnostics.Stopwatch watch = System.Diagnostics.Stopwatch.StartNew();
+        unsafe
+        {
+          switch (pick)
+          {
+            case '1':
+              {
+                watch.Start();
+
+                Console.WriteLine("Введите, пожалуйста, целочисленные значения");
+                for (int idx = 0; idx < size; idx++)
+                {
+                  Console.Write($"{idx + 1}): ");
+                  iArray[idx] = int.Parse(Console.ReadLine());
+                };
+                watch.Stop();
+                Console.WriteLine($"Ваше время работы пунктом 1: {watch.Elapsed}");
+                watch.Reset();
+              }; break;
+            case '2':
+              {
+                watch.Start();
+
+                fixed (int* ptr = iArray)
+                {
+                  for (int i = 0; i < size; i++)
+                  {
+                    if (i % 2 == 0)
+                    {
+                      Console.WriteLine("Адрес элемента с индексом " + i + " = " + (int)(ptr + i));
+                    }
+                  };
+                }
+                watch.Stop();
+                Console.WriteLine($"Ваше время работы пунктом 2: {watch.Elapsed}");
+                watch.Reset();
+              }; break;
+            case '3':
+              {
+                watch.Start();
+                Console.Write("Введите, пожалуйста, индекс больше -1: ");
+                int userIdx = int.Parse(Console.ReadLine());
+                fixed (int* ptr = iArray)
+                {
+                  if (userIdx <= 0 || userIdx > iArray.Length - 1)
+                  {
+                    Console.WriteLine($"Введеный индекс должен не меньше 0 или не больше {iArray.Length - 1}");
+                  }
+                  else
+                  {
+                    Console.WriteLine($"Значение элемента, индекс которого меньше на 1: {*(ptr + (userIdx - 1))}");
+                  }
+                }
+                watch.Stop();
+                Console.WriteLine($"Ваше время работы пунктом 3: {watch.Elapsed}");
+                watch.Reset();
+              }; break;
+            case '4': return;
+            default: break;
+          }
+        }
+      }
+    }
+
+    static void pr18()
+    {
+      string str = "";
+      char letter;
+      int countReplace = 0;
+      StringBuilder res = new StringBuilder("");
+
+      char pick;
+      Console.WriteLine("Программа выводит пользовательское меню, где можно:\n" +
+      $"\tЗаменить введенной буквой четные символы в строке\n" +
+      "\tвывести полученного слово и количество замен" +
+      "\t");
+
+      for (; ; )
+      {
+        do
+        {
+          Console.WriteLine("1: Ввести строку");
+          Console.WriteLine("2: прозвести замену четных символов в веденной строке");
+          Console.WriteLine("3: Вывод новой строки и количества замен");
+          Console.WriteLine("4: Выход из программы");
+          Console.WriteLine("Выберите пункт меню");
+          pick = char.Parse(Console.ReadLine());
+        } while (pick > '4');
+
+        switch (pick)
+        {
+          case '1':
+            {
+              Console.Write("Введите, пожалуйста, слово: ");
+              str = Console.ReadLine();
+            }; break;
+          case '2':
+            {
+              Console.WriteLine("Введите, пожалуйста, букву, которой будут заменены четные символы");
+              letter = char.Parse(Console.ReadLine());
+              res = new StringBuilder(str);
+              for (int i = 0; i < str.Length; i++)
+              {
+                if (i % 2 == 0)
+                {
+                  res[i] = letter;
+                  countReplace++;
+                }
+              }
+              Console.WriteLine("Замена произведена успешно!");
+            }; break;
+          case '3':
+            {
+              Console.WriteLine($"Полученное слово - {res}. \nКоличество замен - {countReplace}");
+            }; break;
+          case '4': return;
+          default: break;
+        }
+      }
+    }
+
+    enum ListEnum { Карандаш, Ручка, Мелок, Фломастер };
+    static void pr19()
+    {
+      double[] price = { 100, 200, 300, 400 };
+      string[] size = { "1x20", "1x15", "5x5", "2x15" };
+      int pick;
+
+      Console.WriteLine(
+        "Программа выводит данные о цене и размере письменных принадлежностей, приведенных списком в меню"
+      );
+
+      for (; ; )
+      {
+        do
+        {
+          Console.WriteLine("Чтобы узнать подробнее о продукте, введите его порядковый номер: ");
+
+          foreach (var item in Enum.GetNames(typeof(ListEnum)))
+          {
+            var idx = Enum.Parse(typeof(ListEnum), item);
+            Console.WriteLine($"{(int)idx + 1}) {item}");
+          }
+          Console.WriteLine($"{price.Length + 1}) Выйти из программы");
+          pick = int.Parse(Console.ReadLine());
+          if (pick == price.Length + 1) return;
+        } while (pick > price.Length);
+        int pickIdx = pick - 1;
+        Console.WriteLine(
+          $"Вами был выбран - {Enum.Parse<ListEnum>((pickIdx).ToString())}\n" +
+          $"стоимость: {price[pickIdx]}p.\n" +
+          $"размеры: {size[pickIdx]}"
+        );
+      }
+    }
+
+    struct SPORT
+    {
+      public string name;
+      public string country;
+      public int[] date;
+      public double[] lostWeight;
+    }
+    static void pr20()
+    {
+      Console.WriteLine(
+        "Программа записывает данные о спротсмене-пятиборце и информацию о соревновании\n" +
+        "и выводит на дисплей сведений о спортсмене с указанием среднего веса в килограммах и граммах,\n" +
+        "потерянного спортсменом на этапе соревнования"
+      );
+
+      SPORT candidate;
+      candidate.date = new int[3];
+      candidate.lostWeight = new double[5];
+      double averageKg = 0;
+
+      Console.Write("Введите имя спортсмена: ");
+      candidate.name = Console.ReadLine();
+      Console.Write("Страну, проводившую чемпионат: ");
+      candidate.country = Console.ReadLine();
+      Console.WriteLine("Дата проведения");
+      Console.Write("\tДень: ");
+      candidate.date[0] = int.Parse(Console.ReadLine());
+      Console.Write("\tМесяц: ");
+      candidate.date[1] = int.Parse(Console.ReadLine());
+      Console.Write("\tГод: ");
+      candidate.date[2] = int.Parse(Console.ReadLine());
+
+      for (int i = 0; i < candidate.lostWeight.Length; i++)
+      {
+        Console.Write($"Вес спортсмена на {i + 1} этапе: ");
+        double input = double.Parse(Console.ReadLine());
+        candidate.lostWeight[i] = input;
+        averageKg += input;
+      }
+      averageKg = averageKg / candidate.lostWeight.Length;
+
+      Console.WriteLine(
+        "Сведения:\n" +
+        $"- Имя: {candidate.name}\n" +
+        $"- Страна, проводившая чемпионат: {candidate.country}\n" +
+        $"- Дата проведения: {candidate.date[0]}/{candidate.date[1]}/{candidate.date[2]}\n" +
+        $"- Cреднеий вес, потерянный спортсменом на этапе соревнования\n" +
+        $"\tв килограмм: {averageKg}\n" +
+        $"\tв граммах: {averageKg / 1000}\n"
+      );
+    }
+
     static void Main(string[] args)
     {
-      // pr789();
-
-      // pr10(true);
-      // pr10(false);
-
-
-      // pr11();
-      // pr12();
-      // pr13();
       pr14();
+      // pr15(); // +
+      // pr16(); // +
+      // pr17(); // + 
+      // pr18(); // +
+      // pr19(); // +
+      // pr20(); // + 
+
       Console.ReadKey();
     }
   }
