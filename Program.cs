@@ -6,7 +6,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Text.RegularExpressions;
-
+using System.IO;
 
 namespace pr79
 {
@@ -523,16 +523,191 @@ namespace pr79
       );
     }
 
+    static void pr22()
+    {
+      const string path = "input.dat", resultPath = "info.txt";
+      string[] userInput;
+
+      char pick;
+
+      for (; ; )
+      {
+        do
+        {
+          Console.Clear();
+          Console.WriteLine(
+            $"Программа выводит пользовательское меню, где можно: \n" +
+             "- Записать в байтовый файл строки, введенные пользователем\n" +
+             "- Считать текст из байтового файла, убрать все пробелы из строк, определить длину строк\n" +
+             "- Считать данные из результирующего текстового файла"
+          );
+
+          Console.WriteLine("1: Записать в байтовый файл строки");
+          Console.WriteLine("2: Считать данные из результирующего текстового файла");
+          Console.WriteLine("3: Выход из программы");
+          Console.WriteLine("Выберите пункт меню");
+          pick = char.Parse(Console.ReadLine());
+        } while (pick > '3');
+
+        switch (pick)
+        {
+          case '1':
+            {
+              Console.Clear();
+              Console.WriteLine("1: Записать в байтовый файл строки");
+              Console.Write("Введите текст: ");
+              userInput = Console.ReadLine().Split(' ', StringSplitOptions.RemoveEmptyEntries);
+
+              using (BinaryWriter writer = new BinaryWriter(File.Open(path, FileMode.Create)))
+              {
+                foreach (string text in userInput) writer.Write(text);
+              };
+
+              using (StreamWriter SW = new StreamWriter(File.Open("info.txt", FileMode.Create)))
+              {
+                using (BinaryReader reader = new BinaryReader(File.Open(path, FileMode.Open)))
+                {
+                  int length = userInput.Length;
+
+                  for (int i = 0; i < length; i++)
+                  {
+                    string info = reader.ReadString();
+                  }
+                  string woSpace = Regex.Replace(string.Join("", userInput), @"\s", "");
+                  int woSpaceLength = Regex.Matches(string.Join(" ", userInput), @"\s").Count;
+                  SW.Write(
+                    $"Длина строк: {length} символа\n" +
+                    $"Результат без пробелов: {woSpace}\n" +
+                    $"Количество удаленных пробелов: {woSpaceLength}"
+                  );
+                };
+              };
+              Console.ReadKey();
+            }; break;
+          case '2':
+            {
+              Console.Clear();
+              Console.WriteLine("2: Считать данные из результирующего текстового файла");
+              using (StreamReader reader = new StreamReader(File.Open(resultPath, FileMode.Open)))
+              {
+                string resultData = reader.ReadToEnd();
+                Console.WriteLine(resultData);
+              };
+              Console.ReadKey();
+            }; break;
+          case '3': return;
+          default: break;
+        }
+      }
+    }
+
+    struct Processor
+    {
+      public string company;
+      public string name;
+      public string typeCooling;
+      public double price;
+      public double frequency;
+      public int coreCount;
+      public int cacheMemorySize;
+    }
+    static void pr23()
+    {
+      const string path = "pr23-input.dat";
+      Processor processor;
+
+      char pick;
+
+      for (; ; )
+      {
+        do
+        {
+          Console.Clear();
+          Console.WriteLine(
+            $"Программа выводит пользовательское меню, где можно: \n" +
+             "- Сохранить данные о процессоре, введенными пользователем\n" +
+             "- Вывести данные о процессоре из двоичного файла на экран"
+          );
+
+          Console.WriteLine("1: Сохранить данные о процессоре, введенными пользователем");
+          Console.WriteLine("2: Вывести данные о процессоре из двоичного файла на экран");
+          Console.WriteLine("3: Выход из программы");
+          Console.WriteLine("Выберите пункт меню");
+          pick = char.Parse(Console.ReadLine());
+        } while (pick > '3');
+
+        switch (pick)
+        {
+          case '1':
+            {
+              Console.Clear();
+              Console.WriteLine("1: Сохранить данные о процессоре, введенными пользователем");
+
+              Console.WriteLine("Введите, пожалуйста, данные о процессоре: ");
+              Console.Write("Название фирмы: ");
+              processor.company = Console.ReadLine();
+              Console.Write("Наименование: ");
+              processor.name = Console.ReadLine();
+              Console.Write("Тип охлаждения: ");
+              processor.typeCooling = Console.ReadLine();
+              Console.Write("Цена: ");
+              processor.price = double.Parse(Console.ReadLine());
+              Console.Write("Частота процессора: ");
+              processor.frequency = double.Parse(Console.ReadLine());
+              Console.Write("Количество ядер: ");
+              processor.coreCount = int.Parse(Console.ReadLine());
+              Console.Write("Размер кэш-памяти: ");
+              processor.cacheMemorySize = int.Parse(Console.ReadLine());
+              using (BinaryWriter writer = new BinaryWriter(File.Open(path, FileMode.Create)))
+              {
+                // writer.Write(
+                //   $"Название фирмы: {processor.company}\n" +
+                //   $"Наименование: {processor.name}\n" +
+                //   $"Тип охлаждения: {processor.typeCooling}\n" +
+                //   $"Цена: {processor.price}\n" +
+                //   $"Частота процессора: {processor.frequency}\n" +
+                //   $"Количество ядер: {processor.coreCount}\n" +
+                //   $"Размер кэш-памяти: {processor.cacheMemorySize}"
+                // );
+                // writer.Write($"test: {32}");
+                writer.Write(processor.company);
+                writer.Write(processor.name);
+                writer.Write(processor.typeCooling);
+                writer.Write(processor.price);
+                writer.Write(processor.frequency);
+                writer.Write(processor.coreCount);
+                writer.Write(processor.cacheMemorySize);
+              };
+
+              Console.ReadKey();
+            }; break;
+          case '2':
+            {
+              Console.Clear();
+              Console.WriteLine("2: Вывести данные о процессоре из двоичного файла на экран, в соответсвие с критерием");
+              using (BinaryReader reader = new BinaryReader(File.Open(path, FileMode.Open)))
+              {
+                // int count = reader.ReadInt32();
+                // string t = reader.
+                decimal frequency = reader.ReadDecimal();
+                Console.WriteLine($"Частота процессора: {frequency}");
+              };
+              Console.ReadKey();
+            }; break;
+          case '3': return;
+          default: break;
+        }
+      }
+    }
+
     static void Main(string[] args)
     {
-      pr14(); // +
-      // pr15(); // +
-      // pr16(); // +
-      // pr17(); // + 
-      // pr18(); // +
       // pr19(); // +
       // pr20(); // + 
 
+      // pr22(); // +
+
+      pr23();
       Console.ReadKey();
     }
   }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/dmitryroar/Desktop/cpp/PP/pr79/pr79.csproj": {}
+    "/Users/dmitryroar/Desktop/cpp/pp/pr79.csproj": {}
   },
   "projects": {
-    "/Users/dmitryroar/Desktop/cpp/PP/pr79/pr79.csproj": {
+    "/Users/dmitryroar/Desktop/cpp/pp/pr79.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/dmitryroar/Desktop/cpp/PP/pr79/pr79.csproj",
+        "projectUniqueName": "/Users/dmitryroar/Desktop/cpp/pp/pr79.csproj",
         "projectName": "pr79",
-        "projectPath": "/Users/dmitryroar/Desktop/cpp/PP/pr79/pr79.csproj",
+        "projectPath": "/Users/dmitryroar/Desktop/cpp/pp/pr79.csproj",
         "packagesPath": "/Users/dmitryroar/.nuget/packages/",
-        "outputPath": "/Users/dmitryroar/Desktop/cpp/PP/pr79/obj/",
+        "outputPath": "/Users/dmitryroar/Desktop/cpp/pp/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/dmitryroar/.nuget/NuGet/NuGet.Config"
