@@ -606,8 +606,8 @@ namespace pr79
       public string company;
       public string name;
       public string typeCooling;
-      public double price;
       public double frequency;
+      public double price;
       public int coreCount;
       public int cacheMemorySize;
     }
@@ -660,21 +660,11 @@ namespace pr79
               processor.cacheMemorySize = int.Parse(Console.ReadLine());
               using (BinaryWriter writer = new BinaryWriter(File.Open(path, FileMode.Create)))
               {
-                // writer.Write(
-                //   $"Название фирмы: {processor.company}\n" +
-                //   $"Наименование: {processor.name}\n" +
-                //   $"Тип охлаждения: {processor.typeCooling}\n" +
-                //   $"Цена: {processor.price}\n" +
-                //   $"Частота процессора: {processor.frequency}\n" +
-                //   $"Количество ядер: {processor.coreCount}\n" +
-                //   $"Размер кэш-памяти: {processor.cacheMemorySize}"
-                // );
-                // writer.Write($"test: {32}");
                 writer.Write(processor.company);
                 writer.Write(processor.name);
                 writer.Write(processor.typeCooling);
-                writer.Write(processor.price);
                 writer.Write(processor.frequency);
+                writer.Write(processor.price);
                 writer.Write(processor.coreCount);
                 writer.Write(processor.cacheMemorySize);
               };
@@ -687,10 +677,16 @@ namespace pr79
               Console.WriteLine("2: Вывести данные о процессоре из двоичного файла на экран, в соответсвие с критерием");
               using (BinaryReader reader = new BinaryReader(File.Open(path, FileMode.Open)))
               {
-                // int count = reader.ReadInt32();
-                // string t = reader.
-                decimal frequency = reader.ReadDecimal();
-                Console.WriteLine($"Частота процессора: {frequency}");
+                int idx = 0;
+                while (reader.PeekChar() > -1)
+                {
+                  double frequency = reader.ReadDouble();
+                  if (idx == 2)
+                  {
+                    Console.WriteLine($"Частота процессора - {frequency}");
+                  }
+                  idx++;
+                }
               };
               Console.ReadKey();
             }; break;
